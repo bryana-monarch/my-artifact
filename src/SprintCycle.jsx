@@ -158,11 +158,10 @@ export default function SprintCycle() {
           Exploratory Workstream · Sprint Cycle
         </div>
         <h1 style={{ fontSize: 28, fontWeight: 700, letterSpacing: -0.5, lineHeight: 1.2 }}>
-          7-Week Cycle
+          Exploratory Workstream
         </h1>
-        <p style={{ marginTop: 8, color: "#475569", fontSize: 13, lineHeight: 1.7, maxWidth: 500 }}>
-          Audit before you brief. Build before you launch. Review before you brief again.<br />
-          Click any week to expand.
+        <p style={{ marginTop: 8, color: "#475569", fontSize: 13, lineHeight: 1.7, maxWidth: 560 }}>
+          A focused, hypothesis-driven engine that generates granular, decision-shaping insight for the business on specific product features and how to position them effectively for marketing and product development purposes.
         </p>
       </div>
 
