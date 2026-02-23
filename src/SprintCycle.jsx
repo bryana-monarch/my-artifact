@@ -15,7 +15,7 @@ const weeks = [
       { day: "THU", content: "Brief review + alignment with growth", highlight: true },
       { day: "FRI", content: "Brief finalized and handed to production", highlight: true },
     ],
-    description: "Designer audits the feature in product — documenting weak UX moments, friction points, and anxiety triggers. Strategist uses this to build the first hypothesis brief before a single ad is made.",
+    description: "Designer audits the feature in product — exploring all functional use cases in a demo environment and documenting their findings in a one-sheeter. They follow up with the product team or product marketing to gut-check their understanding and fill any gaps. The goal is for the designer to feel fully equipped to speak to the nuance of the feature before a single brief is written. Strategist uses this to build the first hypothesis brief before a single ad is made.",
     ongoing: "No creative production yet. Thinking only.",
   },
   {
@@ -32,7 +32,7 @@ const weeks = [
       { day: "THU", content: "QA and final checks", highlight: false },
       { day: "FRI", content: "Final files handed off — ready to launch Monday", highlight: true },
     ],
-    description: "Production week for Batch A. Designer builds 4 deliverables (2 visual systems × 2 framings) against the Week 0 brief. Files handed off Friday for Monday launch.",
+    description: "Production week for Batch A. Designer builds 4 deliverables (2 visual systems × 2 framings) against the approved brief. Files handed off Friday for Monday launch.",
     ongoing: "No live data yet. Full focus on production quality.",
   },
   {
@@ -66,7 +66,7 @@ const weeks = [
       { day: "THU", content: "QA and final checks", highlight: false },
       { day: "FRI", content: "Final files handed off — ready to launch Monday", highlight: true },
     ],
-    description: "Production week for Batch B. Hypothesis compounds on Batch A learnings — brief was written Thursday of last week so production hits the ground running Monday.",
+    description: "Production week for Batch B. Hypothesis compounds on Batch A learnings — brief was written last week so production hits the ground running Monday.",
     ongoing: "Compounding begins. Batch B is a response to Batch A, not a fresh start.",
   },
   {
@@ -123,10 +123,10 @@ const weeks = [
 ];
 
 const typeConfig = {
-  audit:        { label: "Audit + Brief", symbol: "◈" },
-  build:        { label: "Build",         symbol: "⚙" },
-  live:         { label: "Live",          symbol: "●" },
-  "live-retro": { label: "Live + Retro",  symbol: "✓" },
+  audit:      { label: "Audit + Brief", symbol: "◈" },
+  build:      { label: "Build",         symbol: "⚙" },
+  live:       { label: "Live",          symbol: "●" },
+  "live-retro": { label: "Live + Retro", symbol: "✓" },
 };
 
 export default function SprintCycle() {
@@ -152,6 +152,7 @@ export default function SprintCycle() {
         @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
       `}</style>
 
+      {/* Header */}
       <div style={{ maxWidth: 1060, margin: "0 auto 40px" }}>
         <div style={{ fontFamily: "'DM Mono'", fontSize: 10, letterSpacing: 3, color: "#1E3A5F", textTransform: "uppercase", marginBottom: 10 }}>
           Exploratory Workstream · Sprint Cycle
@@ -167,6 +168,7 @@ export default function SprintCycle() {
 
       <div style={{ maxWidth: 1060, margin: "0 auto" }}>
 
+        {/* Cards row */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 7, marginBottom: 6 }}>
           {weeks.map((week, i) => {
             const isActive = active === i;
@@ -193,8 +195,10 @@ export default function SprintCycle() {
                     pointerEvents: "none",
                   }} />
                 )}
+
                 <div style={{
-                  fontFamily: "'DM Mono'", fontSize: 9, letterSpacing: 2,
+                  fontFamily: "'DM Mono'",
+                  fontSize: 9, letterSpacing: 2,
                   color: isActive ? "rgba(255,255,255,0.4)" : "#1E3A5F",
                   marginBottom: 9, textTransform: "uppercase",
                 }}>W{week.number}</div>
@@ -241,6 +245,7 @@ export default function SprintCycle() {
           })}
         </div>
 
+        {/* Rhythm bar */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 7, marginBottom: 3 }}>
           {weeks.map((week, i) => (
             <div key={i} style={{
@@ -250,6 +255,7 @@ export default function SprintCycle() {
           ))}
         </div>
 
+        {/* Type labels */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 7, marginBottom: 28 }}>
           {weeks.map((week, i) => (
             <div key={i} style={{
@@ -263,6 +269,7 @@ export default function SprintCycle() {
           ))}
         </div>
 
+        {/* Detail panel */}
         {active !== null && (
           <div className="detail" style={{
             background: "#111827",
@@ -272,15 +279,19 @@ export default function SprintCycle() {
             marginBottom: 28,
           }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36 }}>
+
               <div>
                 <div style={{
-                  fontFamily: "'DM Mono'", fontSize: 9.5, letterSpacing: 2,
+                  fontFamily: "'DM Mono'",
+                  fontSize: 9.5, letterSpacing: 2,
                   color: weeks[active].accentColor,
                   textTransform: "uppercase", marginBottom: 12,
                 }}>Week {weeks[active].number} — {weeks[active].label}</div>
+
                 <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.8 }}>
                   {weeks[active].description}
                 </p>
+
                 <div style={{
                   marginTop: 16, padding: "11px 14px",
                   background: `${weeks[active].color}0A`,
@@ -295,9 +306,11 @@ export default function SprintCycle() {
 
               <div>
                 <div style={{
-                  fontFamily: "'DM Mono'", fontSize: 9.5, letterSpacing: 2,
+                  fontFamily: "'DM Mono'",
+                  fontSize: 9.5, letterSpacing: 2,
                   color: "#1E3A5F", textTransform: "uppercase", marginBottom: 10,
                 }}>Day-by-Day</div>
+
                 {weeks[active].days.map(({ day, content, highlight }, di) => (
                   <div key={di} className="drow" style={{
                     display: "flex", alignItems: "flex-start", gap: 12,
@@ -326,6 +339,7 @@ export default function SprintCycle() {
           </div>
         )}
 
+        {/* Legend */}
         <div style={{
           display: "flex", gap: 20, flexWrap: "wrap",
           alignItems: "center", paddingTop: 18,
