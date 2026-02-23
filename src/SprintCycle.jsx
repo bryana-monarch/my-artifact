@@ -246,7 +246,7 @@ const weeks = [
       { day: "THU", content: "Strategist builds JTBD hypothesis brief. Brief review + alignment with growth.", highlight: true },
       { day: "FRI", content: "Brief finalized and handed to production. Visual system locked.", highlight: true },
     ],
-    description: "Two parallel tracks converge into a single brief. Track 1 (Product): Designer audits the feature in product — exploring all functional use cases in a demo environment and documenting findings in a one-sheeter. They follow up with the product team or PMM to gut-check their understanding and fill any gaps. Track 2 (Creative): Designer proposes 3 visual system directions using existing work as reference — not a production exercise, a creative direction conversation. Team selects one before build begins. Both tracks feed into the JTBD hypothesis brief. By Friday, the designer knows exactly what problem they're solving, which visual language they're working in, and which surface to show.",
+    description: "Signifies the kickoff of a new exploration. The designer audits the feature in product, explores key use cases in a demo environment, documents findings in a one sheet, and syncs with product or PMM to confirm understanding. In parallel, they propose three visual system directions based on existing work to align on creative direction before production. By Friday, they are clear on the problem to solve, the visual language to use, and the surface to showcase.",
     ongoing: "No ad production yet. Thinking, auditing, and aligning only.",
   },
   {
