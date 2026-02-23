@@ -340,19 +340,19 @@ const weeks = [
   {
     number: 6,
     type: "live-retro",
-    label: "Live + Retro",
+    label: "Live + Retro + Next Brief",
     sublabel: "BATCH C",
     color: "#059669",
     accentColor: "#059669",
     days: [
       { day: "MON", content: "Batch C launches — Phase 3 tone test live", highlight: true },
-      { day: "TUE", content: "Designer supports overflow work", highlight: false },
-      { day: "WED", content: "Final signal baking — all 3 phases reviewable", highlight: false },
-      { day: "THU", content: "Full retro: synthesize all 3 phases into a complete feature positioning verdict. Package notes for PM.", highlight: true },
-      { day: "FRI", content: "Next cycle scoped — feature selected, W0 audit begins Monday", highlight: true },
+      { day: "TUE", content: "Designer supports overflow work. Next feature informally identified.", highlight: false },
+      { day: "WED", content: "Final signal baking — all 3 phases reviewable. Designer begins next feature audit in demo environment.", highlight: true },
+      { day: "THU", content: "Full retro: synthesize all 3 phases into complete positioning verdict. Package notes for PM. Next feature confirmed.", highlight: true },
+      { day: "FRI", content: "Designer presents 3 visual system directions for next feature. Team selects one. JTBD brief written. Next cycle fully briefed — build starts Monday.", highlight: true },
     ],
-    description: "The cycle closes on the same Thursday Batch C data bakes. All three phases synthesized: which problem framing, which surface, which tone. Together that's a complete positioning brief for this feature — not just ad learnings, but insight the product and marketing teams can act on.",
-    ongoing: "Sprint question answered. Feature positioning packaged. Cycle resets.",
+    description: "W6 is both the close of this cycle and the open of the next. The cycle closes Thursday: all three phases synthesized into a complete positioning verdict for this feature — which problem framing, which surface, which tone. That's a brief the product and marketing teams can act on. Friday runs the W0 audit track in parallel: next feature selected, visual system direction chosen, JTBD hypothesis brief written. No gap. Build starts Monday.",
+    ongoing: "This week does the work of two: W6 retro + W0 audit. The cycle is continuous.",
   },
 ];
 
@@ -360,7 +360,7 @@ const typeConfig = {
   audit:        { label: "Audit + Brief", symbol: "◈" },
   build:        { label: "Build",         symbol: "⚙" },
   live:         { label: "Live",          symbol: "●" },
-  "live-retro": { label: "Live + Retro",  symbol: "✓" },
+  "live-retro": { label: "Live + Retro + Brief",  symbol: "✓" },
 };
 
 const phaseLabels = {
@@ -653,7 +653,7 @@ export default function SprintCycle() {
             { color: "#7C3AED", label: "Audit + Brief", desc: "Thinking before making" },
             { color: "#EA580C", label: "Build",         desc: "Production week" },
             { color: "#1D4ED8", label: "Live",          desc: "Data collection" },
-            { color: "#059669", label: "Live + Retro",  desc: "Final window + synthesis" },
+            { color: "#059669", label: "Live + Retro + Brief",  desc: "Final window, synthesis + next brief" },
           ].map(({ color, label, desc }) => (
             <div key={label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <div style={{ width: 8, height: 8, borderRadius: 3, background: color, flexShrink: 0 }} />
