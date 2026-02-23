@@ -15,7 +15,7 @@ const weeks = [
       { day: "THU", content: "Brief review + alignment with growth", highlight: true },
       { day: "FRI", content: "Brief finalized and handed to production", highlight: true },
     ],
-    description: "Designer audits the feature in product — documenting weak UX moments, friction points, and anxiety triggers. Strategist uses this to build the first hypothesis brief before a single ad is made.",
+    description: "Designer audits the feature in product — exploring all functional use cases in a demo environment and documenting their findings in a one-sheeter. They follow up with the product team or product marketing to gut-check their understanding and fill any gaps. The goal is for the designer to feel fully equipped to speak to the nuance of the feature before a single brief is written. Strategist uses this to build the first hypothesis brief before a single ad is made.",
     ongoing: "No creative production yet. Thinking only.",
   },
   {
@@ -32,7 +32,7 @@ const weeks = [
       { day: "THU", content: "QA and final checks", highlight: false },
       { day: "FRI", content: "Final files handed off — ready to launch Monday", highlight: true },
     ],
-    description: "Production week for Batch A. Designer builds 4 deliverables (2 visual systems × 2 framings) against the Week 0 brief. Files handed off Friday for Monday launch.",
+    description: "Production week for Batch A. Designer builds 4 deliverables (2 visual systems × 2 framings) against the approved brief. Files handed off Friday for Monday launch.",
     ongoing: "No live data yet. Full focus on production quality.",
   },
   {
@@ -66,7 +66,7 @@ const weeks = [
       { day: "THU", content: "QA and final checks", highlight: false },
       { day: "FRI", content: "Final files handed off — ready to launch Monday", highlight: true },
     ],
-    description: "Production week for Batch B. Hypothesis compounds on Batch A learnings — brief was written Thursday of last week so production hits the ground running Monday.",
+    description: "Production week for Batch B. Hypothesis compounds on Batch A learnings — brief was written last week so production hits the ground running Monday.",
     ongoing: "Compounding begins. Batch B is a response to Batch A, not a fresh start.",
   },
   {
@@ -158,11 +158,10 @@ export default function SprintCycle() {
           Exploratory Workstream · Sprint Cycle
         </div>
         <h1 style={{ fontSize: 28, fontWeight: 700, letterSpacing: -0.5, lineHeight: 1.2 }}>
-          7-Week Cycle
+          Exploratory Workstream
         </h1>
-        <p style={{ marginTop: 8, color: "#475569", fontSize: 13, lineHeight: 1.7, maxWidth: 500 }}>
-          Audit before you brief. Build before you launch. Review before you brief again.<br />
-          Click any week to expand.
+        <p style={{ marginTop: 8, color: "#475569", fontSize: 13, lineHeight: 1.7, maxWidth: 560 }}>
+          A focused, hypothesis-driven engine that generates granular, decision-shaping insight for the business on specific product features and how to position them effectively for marketing and product development purposes.
         </p>
       </div>
 
@@ -364,6 +363,202 @@ export default function SprintCycle() {
           </div>
         </div>
 
+      </div>
+
+      <ExamplesSection />
+
+    </div>
+  );
+}
+
+/* ── Reference / Examples Section ── */
+function AdCard({ badges, tagline, copyAngleColor, copyAngle, children }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+        {badges.map(b => (
+          <span key={b.label} style={{
+            fontFamily: "'DM Mono'", fontSize: 9, letterSpacing: 2, textTransform: "uppercase",
+            padding: "4px 9px", borderRadius: 4, fontWeight: 500,
+            color: b.color, background: b.bg, border: `1px solid ${b.border}`,
+          }}>{b.label}</span>
+        ))}
+        <span style={{ fontFamily: "'DM Mono'", fontSize: 9, letterSpacing: 0.5, color: "#334155" }}>{tagline}</span>
+      </div>
+      <div style={{ width: "100%", aspectRatio: "1/1", borderRadius: 16, overflow: "hidden", position: "relative" }}>
+        {children}
+      </div>
+      <div style={{ background: "#111827", border: "1px solid #1C1C2A", borderRadius: 10, padding: "14px 16px" }}>
+        <div style={{ fontFamily: "'DM Mono'", fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: copyAngleColor, marginBottom: 8 }}>Copy angle</div>
+        <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7 }}>{copyAngle}</div>
+      </div>
+    </div>
+  );
+}
+
+function AdSysA({ accentColor, headline, ringLabel, ringValue, ringOffset, rows, ctaLabel }) {
+  return (
+    <div style={{ width: "100%", height: "100%", background: "#0A0F1E", position: "relative" }}>
+      <div style={{ position: "absolute", top: "6%", left: "6%", right: "6%" }}>
+        <div style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.1vw,9px)", letterSpacing: 2, textTransform: "uppercase", color: accentColor, marginBottom: 6 }}>Goals feature</div>
+        <div style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 800, fontSize: "clamp(13px,2.6vw,20px)", color: "#F0EEE9", lineHeight: 1.2 }}>{headline}</div>
+      </div>
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -58%)", width: "52%", aspectRatio: "1" }}>
+        <svg viewBox="0 0 100 100" style={{ width: "100%", height: "100%", transform: "rotate(-90deg)" }}>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#1C2340" strokeWidth="8"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke={accentColor} strokeWidth="8"
+            strokeDasharray="263.9" strokeDashoffset={ringOffset} strokeLinecap="round"/>
+        </svg>
+        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+          <div style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 800, fontSize: "clamp(18px,4vw,28px)", color: accentColor, lineHeight: 1 }}>{ringValue}</div>
+          <div style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.2vw,10px)", color: "#4A5070", letterSpacing: 1.5, textTransform: "uppercase", marginTop: 4 }}>{ringLabel}</div>
+        </div>
+      </div>
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 6% 6%" }}>
+        {rows.map((r, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+            <div style={{ fontSize: "clamp(8px,1.4vw,11px)", color: "#8890B0", flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{r.label}</div>
+            <div style={{ flex: 2, height: 4, background: "#1C2340", borderRadius: 2, overflow: "hidden" }}>
+              <div style={{ width: `${r.pct}%`, height: "100%", borderRadius: 2, background: r.color }} />
+            </div>
+            <div style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.2vw,10px)", color: "#4A5070", width: 28, textAlign: "right" }}>{r.pct}%</div>
+          </div>
+        ))}
+        <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.1vw,9px)", color: "#3D3D50", letterSpacing: 1, textTransform: "uppercase" }}>Clarity App</span>
+          <span style={{ display: "inline-flex", alignItems: "center", fontSize: "clamp(8px,1.3vw,10px)", fontWeight: 600, padding: "6px 12px", borderRadius: 20, background: accentColor, color: "#fff", whiteSpace: "nowrap" }}>{ctaLabel}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AdSysB({ blob1, blob2, headline, sub, barLabel, barSub, barPct, barColor, barPctColor, ctaLabel }) {
+  return (
+    <div style={{ width: "100%", height: "100%", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", width: "55%", aspectRatio: "1", borderRadius: "50%", filter: "blur(60px)", opacity: 0.35, background: blob1.color, top: blob1.top, right: blob1.right, left: blob1.left }} />
+      <div style={{ position: "absolute", width: "45%", aspectRatio: "1", borderRadius: "50%", filter: "blur(60px)", opacity: 0.35, background: blob2.color, bottom: blob2.bottom, left: blob2.left, right: blob2.right }} />
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", padding: "7% 7% 6%" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "auto" }}>
+          <div style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 800, fontSize: "clamp(9px,1.5vw,12px)", color: "#1A1A2E", letterSpacing: 0.5 }}>Clarity</div>
+          <div style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.1vw,9px)", letterSpacing: 1.5, textTransform: "uppercase", color: "#9B8E7A" }}>Goals</div>
+        </div>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div style={{ fontFamily: "'Georgia',serif", fontSize: "clamp(22px,5.5vw,44px)", fontWeight: 900, lineHeight: 1.05, color: "#1A1A2E", marginBottom: 12 }}>{headline}</div>
+          <div style={{ fontSize: "clamp(9px,1.6vw,13px)", color: "#6B6355", lineHeight: 1.6, maxWidth: "85%" }}>{sub}</div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 14 }}>
+          <div style={{ flex: 1, paddingRight: 16, display: "flex", flexDirection: "column", gap: 5 }}>
+            <div style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.1vw,9px)", color: "#9B8E7A", letterSpacing: 1, textTransform: "uppercase" }}>{barLabel}</div>
+            <div style={{ height: 5, background: "#DDD5C8", borderRadius: 3, overflow: "hidden" }}>
+              <div style={{ width: `${barPct}%`, height: "100%", borderRadius: 3, background: barColor }} />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontFamily: "'DM Mono'", fontSize: "clamp(7px,1.1vw,9px)", color: "#9B8E7A" }}>{barSub}</span>
+              <span style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 700, fontSize: "clamp(9px,1.5vw,12px)", color: barPctColor }}>{barPct}%</span>
+            </div>
+          </div>
+          <span style={{ display: "inline-flex", alignItems: "center", fontSize: "clamp(8px,1.3vw,10px)", fontWeight: 600, padding: "6px 12px", borderRadius: 20, background: "#1A1A2E", color: "#F5F0E8", whiteSpace: "nowrap" }}>{ctaLabel}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ExamplesSection() {
+  return (
+    <div style={{ maxWidth: 1060, margin: "64px auto 0", paddingTop: 48, borderTop: "1px solid #131C2E" }}>
+      <div style={{ marginBottom: 36 }}>
+        <div style={{ fontFamily: "'DM Mono'", fontSize: 10, letterSpacing: 3, color: "#1E3A5F", textTransform: "uppercase", marginBottom: 10 }}>
+          Reference · Examples
+        </div>
+        <h2 style={{ fontSize: 22, fontWeight: 700, letterSpacing: -0.3, color: "#F1F5F9", marginBottom: 8 }}>
+          2 Visual Systems × 2 Framings
+        </h2>
+        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, maxWidth: 560 }}>
+          Batch A hypothesis: does functional framing (what the feature does) outperform emotional framing (how it feels)? Illustrated below using a Goals feature from a personal finance app.
+        </p>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px 32px" }}>
+        <AdCard
+          badges={[
+            { label: "Visual System A", color: "#7B6EF6", bg: "#1A1A2E", border: "#7B6EF633" },
+            { label: "Functional", color: "#C9A84C", bg: "#1C1A12", border: "#C9A84C33" },
+          ]}
+          tagline="What it does" copyAngleColor="#C9A84C"
+          copyAngle="Feature-forward. Names the mechanic (set, track, hit). UI shown literally. CTA is transactional."
+        >
+          <AdSysA accentColor="#7B6EF6" headline={<>Set a goal.<br/>Track it.<br/>Hit it.</>}
+            ringLabel="of $5,000" ringValue="$3,420" ringOffset={73}
+            rows={[
+              { label: "Emergency fund", pct: 72, color: "#7B6EF6" },
+              { label: "Vacation", pct: 38, color: "#4AB8D4" },
+              { label: "New laptop", pct: 91, color: "#6EBF8B" },
+            ]} ctaLabel="Start saving →" />
+        </AdCard>
+
+        <AdCard
+          badges={[
+            { label: "Visual System A", color: "#7B6EF6", bg: "#1A1A2E", border: "#7B6EF633" },
+            { label: "Emotional", color: "#D46E9B", bg: "#1A1218", border: "#D46E9B33" },
+          ]}
+          tagline="How it feels" copyAngleColor="#D46E9B"
+          copyAngle="Same UI layout, different labels — goals named as feelings not targets. Headline sells relief, not the feature."
+        >
+          <AdSysA accentColor="#D46E9B" headline={<>Finally feel like you're getting somewhere.</>}
+            ringLabel="there" ringValue="68%" ringOffset={73}
+            rows={[
+              { label: "Peace of mind", pct: 68, color: "#D46E9B" },
+              { label: "Something to look forward to", pct: 42, color: "#C9A84C" },
+              { label: "Breathing room", pct: 85, color: "#7B6EF6" },
+            ]} ctaLabel="Make it happen →" />
+        </AdCard>
+
+        <AdCard
+          badges={[
+            { label: "Visual System B", color: "#6EBF8B", bg: "#1A2518", border: "#6EBF8B33" },
+            { label: "Functional", color: "#C9A84C", bg: "#1C1A12", border: "#C9A84C33" },
+          ]}
+          tagline="What it does" copyAngleColor="#C9A84C"
+          copyAngle="Warm, editorial aesthetic but copy stays functional — names the mechanic, shows real UI, removes a specific friction (spreadsheet)."
+        >
+          <AdSysB
+            blob1={{ color: "#6EBF8B", top: "-10%", right: "-10%" }}
+            blob2={{ color: "#C9A84C", bottom: "10%", left: "-5%" }}
+            headline={<>One goal.<br/><em>Any</em> size.</>}
+            sub="Name it, set a target, and watch your progress in real time. No spreadsheet required."
+            barLabel="Emergency fund" barSub="$3,600 / $5,000"
+            barPct={72} barColor="#6EBF8B" barPctColor="#1A1A2E" ctaLabel="Try it free" />
+        </AdCard>
+
+        <AdCard
+          badges={[
+            { label: "Visual System B", color: "#6EBF8B", bg: "#1A2518", border: "#6EBF8B33" },
+            { label: "Emotional", color: "#D46E9B", bg: "#1A1218", border: "#D46E9B33" },
+          ]}
+          tagline="How it feels" copyAngleColor="#D46E9B"
+          copyAngle={'No feature explanation at all. Addresses the anxiety ("stop guessing"). Progress bar label is emotional, not numeric. CTA is personalised.'}
+        >
+          <AdSysB
+            blob1={{ color: "#D46E9B", top: "-15%", left: "-10%" }}
+            blob2={{ color: "#6EBF8B", bottom: "5%", right: "-5%" }}
+            headline={<>Stop<br/><em>guessing.</em><br/>Start knowing.</>}
+            sub="You don't need a plan. You just need to see where you stand."
+            barLabel="Your goal" barSub="Closer than you think"
+            barPct={58} barColor="#D46E9B" barPctColor="#D46E9B" ctaLabel="See yours" />
+        </AdCard>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, maxWidth: 680, marginTop: 40, paddingBottom: 64 }}>
+        <div style={{ background: "#111827", border: "1px solid #131C2E", borderRadius: 10, padding: "14px 16px" }}>
+          <div style={{ fontFamily: "'DM Mono'", fontSize: 9, letterSpacing: 1.5, textTransform: "uppercase", color: "#6EBF8B", marginBottom: 6 }}>Held constant across all 4</div>
+          <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.7 }}>Feature: Goals · Format: 1:1 static social<br/>Sprint question: functional vs. emotional</div>
+        </div>
+        <div style={{ background: "#111827", border: "1px solid #131C2E", borderRadius: 10, padding: "14px 16px" }}>
+          <div style={{ fontFamily: "'DM Mono'", fontSize: 9, letterSpacing: 1.5, textTransform: "uppercase", color: "#D46E9B", marginBottom: 6 }}>What changes per ad</div>
+          <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.7 }}>Visual system (A: dark/structured · B: warm/editorial)<br/>Framing (functional: names the feature · emotional: names the feeling)</div>
+        </div>
       </div>
     </div>
   );
