@@ -365,8 +365,7 @@ export default function SprintCycle() {
 
       </div>
 
-      <ExamplesSection />
-
     </div>
   );
 }
+
